@@ -9,15 +9,15 @@
       <div class="row">
         <?php 
           include ('koneksi.php'); 
-          $conn=mysqli_query($conn,"select * from produk");
+          $conn=mysqli_query($conn,"select * from product");
           while($h=mysqli_fetch_array($conn)){
           ?>
             <div class="col-6 col-md-2">
-              <a href="produk_detail.php?id_brg=<?=$h['id_brg'];?>" class="btn btn-light">
+              <a href="produk_detail.php?id_product=<?=$h['id_product'];?>" class="btn btn-light">
                 <div class="card-body">
                   <img src="assets/image/<?=$h['img']; ?>" class="card-img-top" alt="img" style="width: 180px;height:180px;">
-                  <p class="card-text m-1" style="white-space: pre-wrap;"><?=substr($h['nm_brg'], 0,17  ,); ?> ...</p>
-                  <p><b><?="Rp".number_format($h['harga']); ?></b></p>
+                  <p class="card-text m-1" style="white-space: pre-wrap;"><?=substr($h['nm_product'], 0,17  ,); ?> ...</p>
+                  <p><b><?="Rp".number_format($h['price']); ?></b></p>
                   <p style="color:orange" class="m-1">
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
@@ -25,7 +25,7 @@
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                   </p>
-                  <p class="card-text" hidden><?=$h['kategori']; ?></p>
+                  <p class="card-text" hidden><?=$h['category']; ?></p>
                 </div>
               </a>
             </div>
@@ -43,7 +43,7 @@
 
       $('#carinama').on('keyup', function(){
 
-        $('cari').load('ajax.php?nm_brg=' + $('#carinama').val());
+        $('cari').load('ajax.php?nm_product=' + $('#carinama').val());
 
       });
 

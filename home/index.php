@@ -18,7 +18,7 @@
     include('../seslog.php'); 
     include "header.php";
 ?>
- <span hidden><?php echo $session_username;?> </span>
+ <span hidden><?php echo $session_email;?> </span>
     <!-- Main content -->
     <section class="content">
     <?php

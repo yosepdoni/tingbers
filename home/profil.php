@@ -6,7 +6,7 @@
     <div class="container rounded bg-light mt-5 mb-5">
         <div class="row">
             <div class="col-md-3 border-right">
-                <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://img.icons8.com/windows/2x/user.png"><span class="font-weight-bold"><?php echo $session_username;?></span><span class="text-black-50" style="text-transform: uppercase;"><?php echo $session_nama_user;?></span><span> </span></div>
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://img.icons8.com/windows/2x/user.png"><span class="font-weight-bold"><?php echo $session_email;?></span><span class="text-black-50" style="text-transform: uppercase;"><?php echo $session_nama;?></span><span> </span></div>
             </div>
             <div class="col-md-5 border-right">
                 <div class="p-3 py-5">
@@ -14,14 +14,16 @@
                         <h4 class="text-right">Pengaturan Profil</h4>
                     </div>
                     <div class="row mt-2">
-                        <div class="col-md-12"><label class="labels">Nama</label><input type="text" class="form-control" placeholder="first name" value="<?php echo $session_nama_user;?>"></div>
+                        <div class="col-md-12"><label class="labels">Nama</label><input type="text" class="form-control" placeholder="first name" value="<?php echo $session_nama;?>"></div>
                     </div>
                     <div class="row mt-3">
                         <div class="col-md-12"><label class="labels">Telp/Wa</label><input type="text area" class="form-control" placeholder="enter phone number" value="<?php echo $session_telp;?>"></div>
                     </div> 
                     <div class="row mt-3">
                         <div class="col-md-6"><label class="labels">Provinsi</label><input type="text" class="form-control" value="<?php echo $session_provinsi;?>" placeholder="Provinsi"></div>
-                        <div class="col-md-6"><label class="labels">Kota</label><input type="text" class="form-control" value="<?php echo $session_kabupaten;?>" placeholder="Kota"></div>
+                        <div class="col-md-6"><label class="labels">Kota</label><input type="text" class="form-control" value="<?php echo $session_kota;?>" placeholder="Kota"></div>
+                        <div class="col-md-6"><label class="labels">Kecamatan</label><input type="text" class="form-control" value="<?php echo $session_kecamatan;?>" placeholder="kecamatan"></div>
+                        <div class="col-md-6"><label class="labels">Keluarahan</label><input type="text" class="form-control" value="<?php echo $session_kelurahan;?>" placeholder="kelurahan"></div>
                     </div>
                     <div class="row mt-3">  
                         <div class="col-md-12"><label class="labels">Alamat</label><textarea type="text" class="form-control" placeholder="masukan alamat"><?php echo $session_alamat;?></textarea></div>

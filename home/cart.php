@@ -4,9 +4,9 @@
 <br>
 <?php 
     include '../koneksi.php';
-    $conn=mysqli_query($conn,"SELECT * FROM orderantampung WhERE id_user='$_SESSION[id_user]'");
+    $conn=mysqli_query($conn,"SELECT * FROM cart WhERE id_user='$_SESSION[id_usr]'");
     while($h=mysqli_fetch_array($conn))
-    $a= $h['id_order'];
+    $a= $h['id_cart'];
     if (empty($a)) {
      echo "<br><center><h4>Maaf Tidak Ada Produk Yang Anda Tambahkan!</h4></center>";
      }else{
@@ -39,7 +39,7 @@
                 $allItems = '';
                 $items = [];
 
-                $sql = "SELECT CONCAT( nm_brg,', ' '(',kondisi,'), ','(',kategori,'), ','(',jumlah,').') AS ItemQty, total FROM orderantampung WhERE id_user='$_SESSION[id_user]'";
+                $sql = "SELECT CONCAT( nm_product,', ' '(',category,'), ','(',qty,').') AS ItemQty, total FROM cart WhERE id_user='$_SESSION[id_usr]'";
                 $stmt = $conn->prepare($sql);
                 $stmt->execute();
                 $result = $stmt->get_result();
@@ -47,33 +47,33 @@
                   $grand_total += $row['total'];
                   $items[] = $row['ItemQty'];
                 }
-                $allItems = implode(', ', $items);
+                $allItems = implode(', ', $items);      
             ?>
 
                 <!-- form untuk mengirim ke history -->
             <form method="POST" action="">
                 <!-- <h1><?=$allItems?></h1>
                 <h1><?=$grand_total?></h1> -->
-                <input type="hidden" name="products"  value="<?=$allItems?>"/>
-                <input type="hidden" name="totalbayar"  value="<?=$grand_total?>"/> <br>
-                <input type="hidden" name="id_user" value="<?=$session_id_user;?>"/>
+                <input type="" name="products"  value="<?=$allItems?>"/>
+                <input type="" name="totalbayar"  value="<?=$grand_total?>"/> <br>
+                <input type="" name="id_user" value="<?=$session_id_user;?>"/>
 
                 <?php 
                     include ('../koneksi.php');
-                    $conn=mysqli_query($conn," SELECT * FROM orderantampung WhERE id_user='$_SESSION[id_user]'");
+                    $conn=mysqli_query($conn," SELECT * FROM cart WhERE id_user='$_SESSION[id_user]'");
                     while($h=mysqli_fetch_array($conn)){
                    ?>     
                 <tr>                   
-                    <input type="hidden" name="id_order"  value="<?=$h['id_order']?>"/>
-                    <input type="hidden" name="id_brg"  value="<?=$h['id_brg']?>"/>
-                    <input type="hidden" name="img"  value="<?=$h['img']?>"/>
-                    <input type="hidden" name="nm_brg"  value="<?=$h['nm_brg']?>"/>
-                    <input type="hidden" name="kondisi"  value="<?=$h['kondisi']?>"/>
-                    <input type="hidden" name="kategori"  value="<?=$h['kategori']?>"/>
-                    <input type="hidden" name="harga"  value="<?=$h['harga']?>"/>
-                    <input type="hidden" name="jumlah"  value="<?=$h['jumlah']?>"/>
-                    <input type="hidden" name="total"  value="<?=$h['total']?>"/>
-                    <input type="hidden" name="id_user" value="<?=$session_id_user;?>"/>
+                    <input type="" name="id_cart"  value="<?=$h['id_cart']?>"/>
+                    <input type="" name="id_product"  value="<?=$h['id_product']?>"/>
+                    <input type="" name="img"  value="<?=$h['img']?>"/>
+                    <input type="" name="nm_product"  value="<?=$h['nm_product']?>"/>
+                    <!-- <input type="" name="kondisi"  value="<?=$h['kondisi']?>"/> -->
+                    <input type="" name="category"  value="<?=$h['category']?>"/>
+                    <input type="" name="price"  value="<?=$h['price']?>"/>
+                    <input type="" name="qty"  value="<?=$h['qty']?>"/>
+                    <input type="" name="total"  value="<?=$h['total']?>"/>
+                    <input type="" name="id_user" value="<?=$session_id_user;?>"/>
                     
                      
 
@@ -83,12 +83,12 @@
                                 <img src="../assets/image/<?=$h['img'];?>" alt="img" width="50" height="50" class="img-fluid d-none d-md-block rounded mb-2 shadow ">
                             </div>
                             <div class="col-md-9 text-left mt-sm-1">
-                                <h><?=$h['nm_brg'];?></h>
-                                <p><?=$h['kondisi'];?> &amp; <?=$h['kategori'];?></p>
+                                <h><?=$h['nm_product'];?></h>
+                                
                             </div>
                         </div>
                     </td>
-                    <td data-th="Price" ><?="Rp".number_format($h['harga'],0,",","."); ?>(<?=$h['jumlah'];?>)</td>
+                    <td data-th="Price" ><?="Rp".number_format($h['harga'],0,",","."); ?>(<?=$h['qty'];?>)</td>
                     <td data-th="Total" class="text-center">
                     <p><?="Rp".number_format($total[] =$h['total'],0,",",".");?>
                     </td>
@@ -131,22 +131,21 @@
 
 <?php
 include('../koneksi.php');
-if (isset($_POST['checkout'])){
+// if (isset($_POST['checkout'])){
 
-	$id_order=$_POST['id_order'] ;
-	$id_brg=$_POST['id_brg'];
-	$img=$_POST['img'];
-    $nm_brg=$_POST['nm_brg'];
-    $nm_brg=$_POST['kondisi'];
-	$nm_brg=$_POST['kategori'];
-	$harga=$_POST['harga'];
-	$jumlah=$_POST['jumlah'];
-    $total=$_POST['total'];
-	$id_user=$_POST['id_user'];
-	$conn=mysqli_query($conn,"INSERT INTO history VALUES
-	(null,'$id_brg','$img', '$nm_brg', '$harga', '$jumlah', '$total', '$id_user')");
-    }
-?>
+// 	$id_cart=$_POST['id_order'] ;
+// 	$id_product=$_POST['id_brg'];
+// 	$img=$_POST['img'];
+//     $nm_product=$_POST['nm_brg'];
+// 	$category_brg=$_POST['category'];
+// 	$price=$_POST['price'];
+// 	$qty=$_POST['qty'];
+//     $total=$_POST['total'];
+// 	$id_user=$_POST['id_user'];
+// 	$conn=mysqli_query($conn,"INSERT INTO history VALUES
+// 	(null,'$id_brg','$img', '$nm_brg', '$harga', '$jumlah', '$total', '$id_user')");
+//     }
+// ?>
 <?php
 include('../koneksi.php');
 if (isset($_POST['checkout'])){ 
@@ -162,7 +161,7 @@ if (isset($_POST['checkout'])){
     include '../koneksi.php';
     if(isset($_POST['checkout'])){
     // HAPUS SELURUH ISI DALAM TABLE TRANSAKSIVIEW
-    $sql=mysqli_query($conn, "DELETE FROM orderantampung");
+    $sql=mysqli_query($conn, "DELETE FROM cart");
        if($conn){
         echo"<script>alert('Trasaksi Berhasil!');</script>";
         echo "<script>window.location.href='index.php?p=cart'</script>";

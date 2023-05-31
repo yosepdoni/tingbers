@@ -30,8 +30,7 @@ $neworder = mysqli_num_rows($neworder);
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
-  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'>  
+  <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'>  
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <!-- session -->
@@ -119,7 +118,7 @@ $neworder = mysqli_num_rows($neworder);
           <img src="dist/img/admin.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block"><?php echo $session_username;?> </a>
+          <a href="#" class="d-block"><?php echo $session_email;?> </a>
         </div>
       </div>
 
@@ -265,6 +264,7 @@ $neworder = mysqli_num_rows($neworder);
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>

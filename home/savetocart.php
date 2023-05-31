@@ -1,17 +1,17 @@
 <?php
 include('../koneksi.php');
 if (isset($_POST['add'])){
-	$id_brg=$_POST['id_brg'];
-	$img=$_POST['img'];
-	$nm_brg=$_POST['nm_brg'];
-	$kondisi=$_POST['kondisi'];
-	$kategori=$_POST['kategori'];
-	$harga=$_POST['harga'];
-	$jumlah=$_POST['jumlah'];
+	$id_product=$_POST['id_product'];
+	// $img=$_POST['img'];
+	$nm_product=$_POST['nm_product'];
+	// $kondisi=$_POST['kondisi'];
+	$category=$_POST['category'];
+	$price=$_POST['price'];
+	$qty=$_POST['qty'];
 	$total=$_POST['total'];
 	$id_user=$_POST['id_user'];
-	$conn=mysqli_query($conn,"INSERT INTO orderantampung VALUES
-	(null,'$id_brg','$img', '$nm_brg', '$kondisi', '$kategori', '$harga', '$jumlah', '$total', '$id_user')");
+	$conn=mysqli_query($conn,"INSERT INTO cart VALUES
+	(null,'$id_user', '$id_product', '$nm_product', '$category', '$qty', '$price', '$total' )");
 	if($conn){
 		echo"<script>alert('DATA BERHASIL DISIMPAN!');</script>";
         header("Location:index.php?p=cart");

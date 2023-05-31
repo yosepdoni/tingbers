@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$db = "tingbers_system";
+$db = "web_ecommerce";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $db);

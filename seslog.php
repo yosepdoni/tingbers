@@ -12,8 +12,8 @@
 	$session_kelurahan=$_SESSION['kelurahan'];
 	$session_alamat=$_SESSION['alamat'];	
 	$session_level=$_SESSION['level'];
-	
-	}else{
+	}
+	else{
 		header ("Location:route.php?p=login");
 	}
 ?>

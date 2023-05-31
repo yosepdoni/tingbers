@@ -2,7 +2,7 @@
  // menghubungkan dengan koneksi database
 include '../koneksi.php';
 // mengambil data barang
-$jum = mysqli_query($conn,"SELECT * FROM orderantampung WhERE id_user='$_SESSION[id_user]'");
+$jum = mysqli_query($conn,"SELECT * FROM cart WhERE id_user='$_SESSION[id_usr]'");
 // menghitung data barang
 $jum = mysqli_num_rows($jum);
 ?>
@@ -35,8 +35,8 @@ Tingbers
             </li>          
           </ul>
             <ul class="nav navbar-nav navbar-right">
-              <li class="nav-item"><a class="nav-link" href="index.php?p=cart"> <i class="fas fa-shopping-cart"></i><span  class="badge badge-danger "><?php echo $jum; ?></span></a></li>
-              <li class="nav-item"><a class="nav-link" style="color: #F1F1F1;" href="index.php?p=profil"> <?php echo $session_username;?></a></li>
+              <li class="nav-item"><a class="nav-link" href="index.php?p=cart"> <i class="fas fa-shopping-cart"></i>&nbsp;<span class="badge bg-danger"><?php echo $jum; ?></span></a></li>
+              <li class="nav-item"><a class="nav-link" style="color: #F1F1F1;" href="index.php?p=profil"> <?php echo $session_email;?></a></li>
             </ul>
         </div>
       </div>

@@ -8,8 +8,8 @@
     <link href="../css/selector.css" rel="stylesheet">
     <script src="../css/selector.js"></script>
 <?php
-    if(isset($_GET['id_brg'])){
-        $id =$_GET['id_brg'];
+    if(isset($_GET['id_product'])){
+        $id =$_GET['id_product'];
     }
     else {
         die ("Error. No ID Selected!");    
@@ -18,10 +18,10 @@
     include "../seslog.php";
     include "header.php";
 
-    $query    =mysqli_query($conn, "SELECT * FROM produk WHERE id_brg='$id'");
+    $query    =mysqli_query($conn, "SELECT * FROM product WHERE id_product='$id'");
     $result    =mysqli_fetch_array($query);   
 ?>
- <span hidden><?php echo $session_username;?> </span>
+  <!-- penghapusan session iduser -->
 
 <br>
 <br>
@@ -36,19 +36,17 @@
     <div class="col-md-9 mt-3">
     <div class="container">
     <form name="form" method="POST" action="savetocart.php">
-          <input type="hidden" name="id_brg"  value="<?=$result['id_brg']?>"></input>
-          <input type="hidden" name="img"  value="<?=$result['img']?>"></input>
-          <input type="hidden" name="nm_brg"  value="<?=$result['nm_brg']?>"></input>
-          <input type="hidden" name="kondisi"  value="<?=$result['kondisi']?>"></input>
-          <input type="hidden" name="kategori"  value="<?=$result['kategori']?>"></input>
-          <input type="hidden" name="harga"  value="<?=$result['harga']?>"></input>
-          <input type="hidden" name="id_user" value="<?=$session_id_user;?>"></input>
-          <div class="d-flex justify-content-between "><h5 class="card-title"> <?=$result['nm_brg']?></h5><h5> <?="Rp".number_format($result['harga']); ?></h5></div>
+          <input type="" name="id_product"  value="<?=$result['id_product']?>"></input>
+          <input type="" name="nm_product"  value="<?=$result['nm_product']?>"></input>
+          <input type="" name="category"  value="<?=$result['category']?>"></input>
+          <input type="" name="price"  value="<?=$result['price']?>"></input>
+          <input type="" name="id_user" value="<?=$session_id_usr;?>"></input>
+          <div class="d-flex justify-content-between "><h5 class="card-title"> <?=$result['nm_product']?></h5><h5> <?="Rp".number_format($result['price']); ?></h5></div>
     <div class="scrollspy-example " data-bs-smooth-scroll="true">
       <div class="card-body">    
-        Kondisi : <b> <?= $result['kondisi']?>  </b><br>
-        Kategori: <b> <?= $result['kategori']?> </b><br>
-        <p class="card-text"> Deskripsi : <br> <?= $result['deskripsi']?></p>   
+
+        Kategori: <b> <?= $result['category']?> </b><br>
+        <p class="card-text"> Deskripsi : <br> <?= $result['description']?></p>   
       </div>
     </div>
     <br>
@@ -59,7 +57,7 @@
                         </div>
                         <div class="icon">
                             <span>0</span>
-                            <input type="text" class="hidden" value="0" name="jumlah" >
+                            <input type="text" class="hidden" value="0" name="qty" >
                         </div>
                         <div class="icon reactive">
                             <span class="ci ci-plus">+</span>
@@ -94,8 +92,8 @@ Swal.fire({
   imageAlt: 'img'
 })};
 function kali() {
-    a=eval(form.harga.value);
-    b=eval(form.jumlah.value);
+    a=eval(form.price.value);
+    b=eval(form.qty.value);
     c=a*b
     form.total.value = c;
     }

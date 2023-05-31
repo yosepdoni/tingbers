@@ -22,9 +22,7 @@
     <!-- Main content -->
     <section class="content">
     <?php
-
         error_reporting(0);
-
         $page = $_GET['p'];
 
         if($page=="home"){
@@ -37,6 +35,8 @@
             include "../about.php";   
         }else if($page=="produk"){
             include "produk.php";
+        }else if($page=="produk_detail"){
+            include "produk_detail.php";
         }else if($page=="cart"){
             include "cart.php";
         }else if($page=="dlcrt"){
